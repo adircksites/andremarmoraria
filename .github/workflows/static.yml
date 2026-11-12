@@ -28,6 +28,7 @@ jobs:
           unzip -q andre-marmoraria.zip -d site
           unzip -oq andre-marmoraria-fotos.zip -d site
           unzip -oq andre-marmoraria-estilos.zip -d site
+          find site/andre-marmoraria -name "*.html" -exec sed -i "s|assets/style.css|assets/style.css?v=$GITHUB_SHA|g" {} +
           test -f site/andre-marmoraria/index.html
       - uses: actions/upload-pages-artifact@v4
         with:
